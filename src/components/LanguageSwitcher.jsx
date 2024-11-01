@@ -1,10 +1,10 @@
-import { LANGUAGES } from '../i18n/translations';
-import { RussianFlag, BritishFlag } from '../i18n/flags';
+import {BritishFlag, RussianFlag} from '../i18n-flags';
+import './languageSwitcher.css';
 
 export const LanguageSwitcher = ({ currentLanguage, onLanguageChange }) => {
     const languages = [
-        { code: LANGUAGES.EN, label: 'English', Icon: BritishFlag },
-        { code: LANGUAGES.RU, label: 'Русский', Icon: RussianFlag }
+        { code: 'en', Icon: BritishFlag },
+        { code: 'ru',  Icon: RussianFlag }
     ];
 
     return (
@@ -17,7 +17,6 @@ export const LanguageSwitcher = ({ currentLanguage, onLanguageChange }) => {
                     title={label}
                 >
                     <Icon />
-                    <span className="language-label">{label}</span>
                 </button>
             ))}
         </div>
