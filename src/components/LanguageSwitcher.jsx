@@ -9,12 +9,11 @@ export const LanguageSwitcher = ({ currentLanguage, onLanguageChange }) => {
 
     return (
         <div className="language-switcher">
-            {languages.map(({ code, label, Icon }) => (
+            {languages.map(({ code, Icon }) => (
                 <button
                     key={code}
                     onClick={() => onLanguageChange(code)}
                     className={`language-button ${currentLanguage === code ? 'active' : ''}`}
-                    title={label}
                 >
                     <Icon />
                 </button>
