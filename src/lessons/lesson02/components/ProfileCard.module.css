@@ -1,8 +1,20 @@
+.pageContainer {
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
 .profileCard {
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 30px 20px;
     background-color: white;
+    padding: 30px 20px;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -71,7 +83,32 @@
     border-bottom: none;
 }
 
+/* Grid Layout Styles */
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Media Queries for Responsive Grid */
+@media (max-width: 1200px) {
+    .gridContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .profileCard {
+        max-width: none;
+    }
+}
+
 @media (max-width: 768px) {
+    .gridContainer {
+        grid-template-columns: 1fr;
+    }
+
     .columnsContainer {
         flex-direction: column;
         gap: 20px;
@@ -96,9 +133,12 @@
 }
 
 @media (prefers-color-scheme: dark) {
+    .pageContainer {
+        background-color: #1a1a1a;
+    }
+
     .profileCard {
         background-color: #2d2d2d;
-        color: #fff;
     }
 
     .profileName {
