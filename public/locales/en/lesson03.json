@@ -1,0 +1,8 @@
+{
+  "login-header": "Login",
+  "username-label": "Username",
+  "username-placeholder": "Enter your username",
+  "password-label": "Password",
+  "password-placeholder": "Enter your password",
+  "login-button": "Login"
+}

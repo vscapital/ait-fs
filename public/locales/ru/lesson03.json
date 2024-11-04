@@ -1,0 +1,8 @@
+{
+  "login-header": "Вход",
+  "username-label": "Имя пользователя",
+  "username-placeholder": "Введите ваше имя пользователя",
+  "password-label": "Пароль",
+  "password-placeholder": "Введите ваш пароль",
+  "login-button": "Войти"
+}

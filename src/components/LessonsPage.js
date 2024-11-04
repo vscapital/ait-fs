@@ -2,15 +2,16 @@ import {useRef, useState} from 'react';
 import Draggable from 'react-draggable';
 import Lesson01 from "../lessons/lesson01/app/Lesson01";
 import Lesson02 from "../lessons/lesson02/app/Lesson02";
+import Lesson03 from "../lessons/lesson03/app/Lesson03";
 import {useTranslation} from "react-i18next";
 import {LanguageSwitcher} from "./LanguageSwitcher";
 import './LessonsPage.css';
 
-const lessons = [Lesson01, Lesson02];
+const lessons = [Lesson01, Lesson02, Lesson03];
 
 export default function LessonsPage() {
     const { i18n } = useTranslation();
-    const [currentLesson, setCurrentLesson] = useState(1);
+    const [currentLesson, setCurrentLesson] = useState(lessons.length - 1);
     const nodeRef = useRef(null);
     const CurrentLessonComponent = lessons[currentLesson];
 
@@ -38,7 +39,7 @@ export default function LessonsPage() {
                         >
                             {lessons.map((_, index) => (
                                 <option key={index} value={index}>
-                                    Lesson {index + 1}
+                                    Lesson {index + 1} homework
                                 </option>
                             ))}
                         </select>
