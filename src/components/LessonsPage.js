@@ -3,11 +3,12 @@ import Draggable from 'react-draggable';
 import Lesson01 from "../lessons/lesson01/app/Lesson01";
 import Lesson02 from "../lessons/lesson02/app/Lesson02";
 import Lesson03 from "../lessons/lesson03/app/Lesson03";
+import Lesson04 from "../lessons/lesson04/app/Lesson04";
 import {useTranslation} from "react-i18next";
 import {LanguageSwitcher} from "./LanguageSwitcher";
 import './LessonsPage.css';
 
-const lessons = [Lesson01, Lesson02, Lesson03];
+const lessons = [Lesson01, Lesson02, Lesson03, Lesson04];
 
 export default function LessonsPage() {
     const { i18n } = useTranslation();
