@@ -1,7 +1,8 @@
 {
-  "name": "my-app",
+  "name": "ait-49fs-vasyl-khvostyk",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "i18next": "^23.16.4",
