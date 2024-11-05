@@ -2,6 +2,8 @@
   "login-header": "Вход",
   "username-label": "Имя пользователя",
   "username-placeholder": "Введите ваше имя пользователя",
+  "email-label": "Электронная почта",
+  "email-placeholder": "Введите вашу электронную почту",
   "password-label": "Пароль",
   "password-placeholder": "Введите ваш пароль",
   "login-button": "Войти"

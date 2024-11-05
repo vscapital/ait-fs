@@ -7,6 +7,7 @@ import {useState} from "react";
 export default function Lesson03LoginForm({ onSubmit }) {
     const [formData, setFormData] = useState({
         username: '',
+        email: '',
         password: ''
     });
     const { t, ready } = useTranslation('lesson03', { useSuspense: false });
@@ -34,6 +35,14 @@ export default function Lesson03LoginForm({ onSubmit }) {
                 placeholder={t('username-placeholder')}
                 label={t('username-label')}
                 value={formData.username}
+                onChange={handleChange}
+            />
+            <Lesson03Input
+                name="email"
+                type="text"
+                placeholder={t('email-placeholder')}
+                label={t('email-label')}
+                value={formData.email}
                 onChange={handleChange}
             />
             <Lesson03Input
