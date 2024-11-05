@@ -20,7 +20,6 @@ i18n
             loadPath: `${baseUrl}/locales/{{lng}}/{{ns}}.json`,
         },
         load: 'languageOnly',
-        defaultNS: 'translation',
         react: {
             useSuspense: false
         }
