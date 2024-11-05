@@ -39,7 +39,7 @@ export default function Lesson03LoginForm({ onSubmit }) {
             />
             <Lesson03Input
                 name="email"
-                type="text"
+                type="email"
                 placeholder={t('email-placeholder')}
                 label={t('email-label')}
                 value={formData.email}
