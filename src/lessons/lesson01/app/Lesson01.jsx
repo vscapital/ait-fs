@@ -1,5 +1,5 @@
 import {ProfileCard} from '../components/ProfileCard';
-import './lesson01.css';
+import styles from './Lesson01.module.css';
 import {useTranslation} from "react-i18next";
 
 const profileData = {
@@ -15,16 +15,16 @@ export const Lesson01 = () => {
         return <div>Loading...</div>;
     }
     return (
-        <div className="App">
-            <header className="header">
+        <div className={styles.app}>
+            <header className={styles.header}>
                 <h1>{t('profile-header')}</h1>
             </header>
 
-            <main className="main">
+            <main className={styles.main}>
                 <ProfileCard {...profileData}/>
             </main>
 
-            <footer className="footer">
+            <footer className={styles.footer}>
                 <p>© {currentYear} {t('footer-text')}</p>
             </footer>
         </div>
