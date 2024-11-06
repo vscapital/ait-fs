@@ -1,4 +1,4 @@
-import Lesson03LoginForm from "../components/Lesson03LoginForm";
+import Lesson03LoginForm, {Lesson03LoginFormValues} from "../components/Lesson03LoginForm";
 import styles from './Lesson03.module.css';
 import {useTranslation} from "react-i18next";
 
@@ -7,7 +7,7 @@ export const Lesson03 = () => {
     if (!ready) {
         return <div>Loading...</div>;
     }
-    const handleSubmit = (values) => {
+    const handleSubmit = (values: Lesson03LoginFormValues) => {
         console.log(values);
     };
     return (

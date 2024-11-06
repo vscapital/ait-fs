@@ -1,10 +1,20 @@
-import Lesson03Input from "./Lesson03Input";
-import Lesson03Button from "./Lesson03Button";
+import Lesson03Input from "./Lesson03Input.js";
+import Lesson03Button from "./Lesson03Button.js";
 import styles from './styles/Lesson03LoginForm.module.css';
 import {useTranslation} from "react-i18next";
-import {useState} from "react";
+import {ChangeEvent, FormEvent, useState} from "react";
 
-export default function Lesson03LoginForm({ onSubmit }) {
+export interface Lesson03LoginFormValues {
+        username: string;
+        email: string;
+        password: string;
+}
+
+interface Lesson03LoginFormProps {
+    onSubmit: (values: Lesson03LoginFormValues) => void;
+}
+
+export default function Lesson03LoginForm({ onSubmit } : Lesson03LoginFormProps) {
     const [formData, setFormData] = useState({
         username: '',
         email: '',
@@ -15,15 +25,15 @@ export default function Lesson03LoginForm({ onSubmit }) {
         return <div>Loading...</div>;
     }
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = event.target;
         setFormData(prev => ({
             ...prev,
             [name]: value
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         onSubmit(formData);
     };
@@ -53,7 +63,9 @@ export default function Lesson03LoginForm({ onSubmit }) {
                 value={formData.password}
                 onChange={handleChange}
             />
-            <Lesson03Button type="submit" label={t('login-button')} />
+            <Lesson03Button type="submit" label={t('login-button')} onClick={() => {
+                console.log('Login button clicked');
+            }} />
         </form>
     );
 }

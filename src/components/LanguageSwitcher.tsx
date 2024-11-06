@@ -1,7 +1,12 @@
 import {BritishFlag, RussianFlag} from '../i18n-flags';
 import './languageSwitcher.css';
 
-export const LanguageSwitcher = ({ currentLanguage, onLanguageChange }) => {
+interface LanguageSwitcherProps {
+    currentLanguage: string;
+    onLanguageChange: (code: string) => void;
+}
+
+export const LanguageSwitcher = ({ currentLanguage, onLanguageChange } : LanguageSwitcherProps ) => {
     const languages = [
         { code: 'en', Icon: BritishFlag },
         { code: 'ru',  Icon: RussianFlag }

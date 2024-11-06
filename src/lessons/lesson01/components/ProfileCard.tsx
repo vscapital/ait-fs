@@ -1,7 +1,13 @@
 import {useTranslation} from "react-i18next";
 import styles from './ProfileCard.module.css';
 
-export const ProfileCard = ({ name, photoUrl, hobbies }) => {
+interface ProfileCardProps {
+    name: string;
+    photoUrl: string;
+    hobbies: string[];
+}
+
+export const ProfileCard = ({ name, photoUrl, hobbies } : ProfileCardProps) => {
     const { t, ready } = useTranslation('lesson01', { useSuspense: false });
     if (!ready) {
         return <div>Loading...</div>;

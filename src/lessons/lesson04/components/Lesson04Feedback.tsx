@@ -1,9 +1,13 @@
-import {useState} from 'react';
+import {ReactNode, useState} from 'react';
 import styles from './Lesson04Feedback.module.css';
 import Button from "../../../components/Button";
 import {useTranslation} from "react-i18next";
 
-const Lesson04Feedback = ({ children }) => {
+interface Lesson04FeedbackProps {
+    children: ReactNode;
+}
+
+const Lesson04Feedback = ({ children } : Lesson04FeedbackProps) => {
     const [likes, setLikes] = useState(0);
     const [dislikes, setDislikes] = useState(0);
     const { t, ready } = useTranslation('lesson04', { useSuspense: false });

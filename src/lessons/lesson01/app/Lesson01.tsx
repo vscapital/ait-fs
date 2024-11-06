@@ -4,7 +4,7 @@ import {useTranslation} from "react-i18next";
 
 const profileData = {
     name: 'Vasyl Khvostyk',
-    photoUrl: `${process.env.PUBLIC_URL}/assets/images/profile-photo.png`,
+    photoUrl: `${import.meta.env.PUBLIC_URL ?? ''}/assets/images/profile-photo.png`,
     hobbies: ['Programming', 'Music Creation', 'Tennis']
 };
 
