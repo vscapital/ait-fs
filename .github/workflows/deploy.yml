@@ -52,8 +52,12 @@ jobs:
           PUBLIC_URL: /${{ github.event.repository.name }}
           VITE_APP_BASE: /${{ github.event.repository.name }}
 
-      - name: List build output
-        run: ls -la dist
+      - name: Verify locales
+        run: |
+          if [ ! -d "dist/locales" ]; then
+            echo "Locales directory not found in build output"
+            exit 1
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
