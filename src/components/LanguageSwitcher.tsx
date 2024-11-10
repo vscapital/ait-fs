@@ -1,4 +1,4 @@
-import { BritishFlag, RussianFlag } from "../i18n-flags";
+import { BritishFlag, RussianFlag } from "./Flags.tsx";
 import "./languageSwitcher.css";
 
 interface LanguageSwitcherProps {
