@@ -1,10 +1,11 @@
 import {ProfileCard} from '../components/ProfileCard';
 import styles from './Lesson01.module.css';
 import {useTranslation} from "react-i18next";
+import profilePhoto from '../../../assets/images/profile-photo.png';
 
 const profileData = {
     name: 'Vasyl Khvostyk',
-    photoUrl: `${import.meta.env.PUBLIC_URL ?? ''}/assets/images/profile-photo.png`,
+    photoUrl: profilePhoto,
     hobbies: ['Programming', 'Music Creation', 'Tennis']
 };
 
