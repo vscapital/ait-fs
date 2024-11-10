@@ -2,6 +2,7 @@ import { ProfileCard } from "../components/ProfileCard";
 import styles from "./Lesson01.module.css";
 import { useTranslation } from "react-i18next";
 import profilePhoto from "../../../assets/images/profile-photo.png";
+import Loading from "../../../components/Loading.tsx";
 
 const profileData = {
   name: "Vasyl Khvostyk",
