@@ -1,11 +1,11 @@
-import {StrictMode} from 'react'
-import {createRoot} from 'react-dom/client'
-import './index.css'
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
 import LessonsPage from "./components/LessonsPage.tsx";
-import './i18n';
+import "./i18n";
 
-createRoot(document.getElementById('root')!).render(
-    <StrictMode>
-        <LessonsPage/>
-    </StrictMode>
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <LessonsPage />
+  </StrictMode>,
 );

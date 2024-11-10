@@ -1,28 +1,31 @@
-import {BritishFlag, RussianFlag} from '../i18n-flags';
-import './languageSwitcher.css';
+import { BritishFlag, RussianFlag } from "../i18n-flags";
+import "./languageSwitcher.css";
 
 interface LanguageSwitcherProps {
-    currentLanguage: string;
-    onLanguageChange: (code: string) => void;
+  currentLanguage: string;
+  onLanguageChange: (code: string) => void;
 }
 
-export const LanguageSwitcher = ({ currentLanguage, onLanguageChange } : LanguageSwitcherProps ) => {
-    const languages = [
-        { code: 'en', Icon: BritishFlag },
-        { code: 'ru',  Icon: RussianFlag }
-    ];
+export const LanguageSwitcher = ({
+  currentLanguage,
+  onLanguageChange,
+}: LanguageSwitcherProps) => {
+  const languages = [
+    { code: "en", Icon: BritishFlag },
+    { code: "ru", Icon: RussianFlag },
+  ];
 
-    return (
-        <div className="language-switcher">
-            {languages.map(({ code, Icon }) => (
-                <button
-                    key={code}
-                    onClick={() => onLanguageChange(code)}
-                    className={`language-button ${currentLanguage === code ? 'active' : ''}`}
-                >
-                    <Icon />
-                </button>
-            ))}
-        </div>
-    );
+  return (
+    <div className="language-switcher">
+      {languages.map(({ code, Icon }) => (
+        <button
+          key={code}
+          onClick={() => onLanguageChange(code)}
+          className={`language-button ${currentLanguage === code ? "active" : ""}`}
+        >
+          <Icon />
+        </button>
+      ))}
+    </div>
+  );
 };
