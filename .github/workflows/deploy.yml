@@ -45,6 +45,11 @@ jobs:
           pnpm install
           pnpm store prune
 
+      - name: Prepare Build
+        run: |
+          mkdir -p dist/locales
+          cp -r public/locales/* dist/locales/
+
       - name: Build
         run: pnpm build
         env:
