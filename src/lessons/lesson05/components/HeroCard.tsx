@@ -2,7 +2,7 @@ import { Shield, Zap } from "lucide-react";
 import styles from "./HeroCard.module.css";
 import { useTranslation } from "react-i18next";
 
-export interface HeroCardProps {
+interface HeroCardProps {
   name: string;
   realName: string;
   image: string;
