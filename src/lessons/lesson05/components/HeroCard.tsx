@@ -1,6 +1,7 @@
 import { Shield, Zap } from "lucide-react";
 import styles from "./HeroCard.module.css";
 import { useTranslation } from "react-i18next";
+import Loading from "../../../components/Loading.tsx";
 
 interface HeroCardProps {
   name: string;
@@ -21,7 +22,7 @@ const HeroCard = ({
 }: HeroCardProps) => {
   const { t, ready } = useTranslation("lesson05", { useSuspense: false });
   if (!ready) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return (

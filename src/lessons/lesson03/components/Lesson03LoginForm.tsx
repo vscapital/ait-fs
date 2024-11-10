@@ -3,6 +3,7 @@ import Lesson03Button from "./Lesson03Button.js";
 import styles from "./styles/Lesson03LoginForm.module.css";
 import { useTranslation } from "react-i18next";
 import { ChangeEvent, FormEvent, useState } from "react";
+import Loading from "../../../components/Loading.tsx";
 
 export interface Lesson03LoginFormValues {
   username: string;
@@ -24,7 +25,7 @@ export default function Lesson03LoginForm({
   });
   const { t, ready } = useTranslation("lesson03", { useSuspense: false });
   if (!ready) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {

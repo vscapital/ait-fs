@@ -2,6 +2,7 @@ import { ReactNode, useState } from "react";
 import styles from "./Lesson04Feedback.module.css";
 import Button from "../../../components/Button";
 import { useTranslation } from "react-i18next";
+import Loading from "../../../components/Loading.tsx";
 
 interface Lesson04FeedbackProps {
   children: ReactNode;
@@ -12,7 +13,7 @@ const Lesson04Feedback = ({ children }: Lesson04FeedbackProps) => {
   const [dislikes, setDislikes] = useState(0);
   const { t, ready } = useTranslation("lesson04", { useSuspense: false });
   if (!ready) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   const handleLike = () => {

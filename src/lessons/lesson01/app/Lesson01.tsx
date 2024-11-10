@@ -13,7 +13,7 @@ export const Lesson01 = () => {
   const currentYear = new Date().getFullYear();
   const { t, ready } = useTranslation("lesson01", { useSuspense: false });
   if (!ready) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
   return (
     <div className={styles.app}>

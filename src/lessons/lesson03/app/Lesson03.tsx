@@ -3,11 +3,12 @@ import Lesson03LoginForm, {
 } from "../components/Lesson03LoginForm";
 import styles from "./Lesson03.module.css";
 import { useTranslation } from "react-i18next";
+import Loading from "../../../components/Loading.tsx";
 
 export const Lesson03 = () => {
   const { t, ready } = useTranslation("lesson03", { useSuspense: false });
   if (!ready) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
   const handleSubmit = (values: Lesson03LoginFormValues) => {
     console.log(values);
