@@ -37,7 +37,7 @@ export default function LessonsPage() {
             <select
               value={currentLesson}
               onChange={handleLessonChange}
-              className="lesson-select"
+              className="text-sm rounded-lg py-0.5"
             >
               {lessons.map((_, index) => (
                 <option key={index} value={index}>
