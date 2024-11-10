@@ -49,10 +49,11 @@ jobs:
         run: pnpm build
         env:
           CI: false
-          PUBLIC_URL: "/${{ github.event.repository.name }}"
+          PUBLIC_URL: /${{ github.event.repository.name }}
+          VITE_APP_BASE: /${{ github.event.repository.name }}
 
       - name: List build output
-        run: ls -la dist/locales
+        run: ls -la dist
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
