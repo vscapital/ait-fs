@@ -1,22 +1,54 @@
-import { ChangeEvent, useRef, useState } from "react";
+import { ChangeEvent, ComponentType, useRef, useState } from "react";
 import Draggable from "react-draggable";
-import Lesson01 from "../lessons/lesson01/app/Lesson01";
-import Lesson02 from "../lessons/lesson02/app/Lesson02";
-import Lesson03 from "../lessons/lesson03/app/Lesson03";
-import Lesson04 from "../lessons/lesson04/app/Lesson04";
-import Lesson05 from "../lessons/lesson05/app/Lesson05";
-import Lesson08 from "../lessons/lesson08/app/Lesson08";
 import { useTranslation } from "react-i18next";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import "./LessonsPage.css";
 
-const lessons = [Lesson01, Lesson02, Lesson03, Lesson04, Lesson05, Lesson08];
+const lessonsContext = import.meta.glob("../lessons/lesson*/app/Lesson*.tsx", {
+  eager: true,
+});
+
+const getLessonNumber = (path: string): number => {
+  const match = path.match(/lesson(\d+)/i);
+  return match ? parseInt(match[1]) : 0;
+};
+
+const lessonComponents = Object.entries(lessonsContext)
+  .map(([path, module]) => {
+    const lessonNumber = getLessonNumber(path);
+    const component = (module as { default: ComponentType }).default;
+    const lessonName = `Lesson${String(lessonNumber).padStart(2, "0")}`;
+
+    Object.defineProperty(component, "name", {
+      value: lessonName,
+      configurable: true,
+    });
+    Object.defineProperty(component, "displayName", {
+      value: lessonName,
+      configurable: true,
+    });
+
+    return {
+      component,
+      name: lessonName,
+      number: lessonNumber,
+    };
+  })
+  .sort((a, b) => a.number - b.number);
+
+interface LessonComponent {
+  component: ComponentType;
+  name: string;
+  number: number;
+}
 
 export default function LessonsPage() {
   const { i18n } = useTranslation();
-  const [currentLesson, setCurrentLesson] = useState(lessons.length - 1);
+  const [currentLesson, setCurrentLesson] = useState(
+    lessonComponents.length - 1,
+  );
   const nodeRef = useRef(null);
-  const CurrentLessonComponent = lessons[currentLesson];
+  const CurrentLessonComponent = lessonComponents[currentLesson].component;
 
   const handleLessonChange = (event: ChangeEvent<HTMLSelectElement>) => {
     setCurrentLesson(Number(event.target.value));
@@ -40,11 +72,13 @@ export default function LessonsPage() {
               onChange={handleLessonChange}
               className="text-sm rounded-lg py-0.5"
             >
-              {lessons.map((component, index) => (
-                <option key={index} value={index}>
-                  {component.name} homework
-                </option>
-              ))}
+              {lessonComponents.map(
+                (lesson: LessonComponent, index: number) => (
+                  <option key={lesson.number} value={index}>
+                    {lesson.name} homework
+                  </option>
+                ),
+              )}
             </select>
             <LanguageSwitcher
               currentLanguage={i18n.language}

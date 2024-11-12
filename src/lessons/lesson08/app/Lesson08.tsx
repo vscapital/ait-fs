@@ -1,19 +1,24 @@
 import { useTranslation } from "react-i18next";
 import Loading from "../../../components/Loading.tsx";
-import { useCallback, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 
-export const Lesson08 = () => {
+interface FoxApiResponse {
+  image: string;
+  link: string;
+}
+
+const Lesson08: FC = () => {
   const { t, ready } = useTranslation("lesson08", { useSuspense: false });
-  const [foxImage, setFoxImage] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [foxImage, setFoxImage] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
 
-  const fetchFoxImage = useCallback(async () => {
+  const fetchFoxImage = useCallback(async (): Promise<void> => {
     try {
       setIsLoading(true);
       setIsImageLoaded(false);
       const response = await fetch("https://randomfox.ca/floof/");
-      const data = await response.json();
+      const data: FoxApiResponse = await response.json();
       setFoxImage(data.image);
     } catch (error) {
       console.error("Error fetching fox image:", error);
@@ -22,22 +27,22 @@ export const Lesson08 = () => {
   }, []);
 
   useEffect(() => {
-    fetchFoxImage();
-  }, []);
+    void fetchFoxImage();
+  }, [fetchFoxImage]);
 
-  const handleImageLoad = () => {
+  const handleImageLoad = (): void => {
     setIsImageLoaded(true);
     setIsLoading(false);
   };
 
-  const handleImageError = () => {
+  const handleImageError = (): void => {
     setIsLoading(false);
     setIsImageLoaded(false);
     console.error("Error loading image");
   };
 
-  const handleRefreshClick = () => {
-    fetchFoxImage();
+  const handleRefreshClick = (): void => {
+    void fetchFoxImage();
   };
 
   if (!ready) {
@@ -74,7 +79,7 @@ export const Lesson08 = () => {
             onClick={handleRefreshClick}
             type="button"
             disabled={isLoading}
-            className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100"
+            className="py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
           >
             {isLoading ? t("loading") : t("refresh")}
           </button>
