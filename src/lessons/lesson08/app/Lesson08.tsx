@@ -86,7 +86,7 @@ const Lesson08: FC = () => {
 
           {!isImageLoaded && !isLoading && foxImage && (
             <div className="text-red-600 dark:text-red-400 text-center">
-              {t("errorLoading")}
+              {t("error-loading")}
             </div>
           )}
         </div>

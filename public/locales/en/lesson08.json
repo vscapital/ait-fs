@@ -1,5 +1,6 @@
 {
   "title": "Random photo",
   "loading": "Loading...",
-  "refresh": "Refresh"
+  "refresh": "Refresh",
+  "error-loading": "Error loading image"
 }
