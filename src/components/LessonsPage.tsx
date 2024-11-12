@@ -5,11 +5,12 @@ import Lesson02 from "../lessons/lesson02/app/Lesson02";
 import Lesson03 from "../lessons/lesson03/app/Lesson03";
 import Lesson04 from "../lessons/lesson04/app/Lesson04";
 import Lesson05 from "../lessons/lesson05/app/Lesson05";
+import Lesson08 from "../lessons/lesson08/app/Lesson08";
 import { useTranslation } from "react-i18next";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import "./LessonsPage.css";
 
-const lessons = [Lesson01, Lesson02, Lesson03, Lesson04, Lesson05];
+const lessons = [Lesson01, Lesson02, Lesson03, Lesson04, Lesson05, Lesson08];
 
 export default function LessonsPage() {
   const { i18n } = useTranslation();
@@ -39,9 +40,9 @@ export default function LessonsPage() {
               onChange={handleLessonChange}
               className="text-sm rounded-lg py-0.5"
             >
-              {lessons.map((_, index) => (
+              {lessons.map((component, index) => (
                 <option key={index} value={index}>
-                  Lesson {index + 1} homework
+                  {component.name} homework
                 </option>
               ))}
             </select>

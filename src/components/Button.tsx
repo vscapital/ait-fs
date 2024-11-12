@@ -4,6 +4,7 @@ import { ReactNode } from "react";
 interface ButtonProps {
   onClick: () => void;
   children: ReactNode;
+  disabled?: boolean;
   type?: "button" | "submit" | "reset";
   className?: string;
 }
@@ -11,12 +12,14 @@ interface ButtonProps {
 const Button = ({
   onClick,
   children,
+  disabled = false,
   type = "button",
   className,
 }: ButtonProps) => (
   <button
     onClick={onClick}
     type={type}
+    disabled={disabled}
     className={`${styles.button} ${className || ""}`}
   >
     {children}
