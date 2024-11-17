@@ -5,7 +5,6 @@ import path from "path";
 
 const base = process.env.VITE_APP_BASE || "/";
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
@@ -25,4 +24,7 @@ export default defineConfig({
     },
   },
   assetsInclude: ["**/*.json"],
+  define: {
+    "process.env.VITE_APP_BASE": JSON.stringify(base),
+  },
 });

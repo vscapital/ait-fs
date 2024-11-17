@@ -1,6 +1,12 @@
 import { ChangeEvent, ComponentType, createElement, useRef } from "react";
 import "./LessonsPage.css";
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Draggable from "react-draggable";
 import { LanguageSwitcher } from "./LanguageSwitcher.tsx";
@@ -62,7 +68,7 @@ export default function LessonsPage() {
 
   const handleLessonChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const selectedLesson = lessonComponents[Number(event.target.value)];
-    navigate(`/${selectedLesson.path}`);
+    navigate(selectedLesson.path);
   };
 
   return (
@@ -112,6 +118,7 @@ export default function LessonsPage() {
               element={createElement(lesson.component)}
             />
           ))}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
     </div>
