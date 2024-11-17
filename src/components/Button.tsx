@@ -2,8 +2,8 @@ import styles from "./Button.module.css";
 import { ReactNode } from "react";
 
 interface ButtonProps {
-  onClick: () => void;
   children: ReactNode;
+  onClick?: () => void;
   disabled?: boolean;
   type?: "button" | "submit" | "reset";
   className?: string;

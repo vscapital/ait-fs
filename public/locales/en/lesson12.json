@@ -1,0 +1,19 @@
+{
+  "name": "Name",
+  "enter-name": "Enter name",
+  "checking": "Checking...",
+  "check-gender": "Check Gender",
+  "results": "Results",
+  "gender": "Gender",
+  "probability": "Probability",
+  "count": "Count",
+  "validation": {
+    "name-required": "Name is required",
+    "name-min-length": "Name must be at least 2 characters",
+    "name-letters-only": "Name must contain only letters"
+  },
+  "errors": {
+    "fetch-failed": "Failed to fetch gender data",
+    "generic": "An error occurred"
+  }
+}
