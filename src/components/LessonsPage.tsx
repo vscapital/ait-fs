@@ -1,8 +1,16 @@
-import { ChangeEvent, ComponentType, useRef, useState } from "react";
-import Draggable from "react-draggable";
-import { useTranslation } from "react-i18next";
-import { LanguageSwitcher } from "./LanguageSwitcher";
+import { ChangeEvent, ComponentType, createElement, useRef } from "react";
 import "./LessonsPage.css";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import Draggable from "react-draggable";
+import { LanguageSwitcher } from "./LanguageSwitcher.tsx";
+
+interface LessonComponent {
+  component: ComponentType;
+  name: string;
+  number: number;
+  path: string;
+}
 
 const lessonsContext = import.meta.glob("../lessons/lesson*/app/Lesson*.tsx", {
   eager: true,
@@ -13,7 +21,7 @@ const getLessonNumber = (path: string): number => {
   return match ? parseInt(match[1]) : 0;
 };
 
-const lessonComponents = Object.entries(lessonsContext)
+const lessonComponents: LessonComponent[] = Object.entries(lessonsContext)
   .map(([path, module]) => {
     const lessonNumber = getLessonNumber(path);
     const component = (module as { default: ComponentType }).default;
@@ -32,26 +40,29 @@ const lessonComponents = Object.entries(lessonsContext)
       component,
       name: lessonName,
       number: lessonNumber,
+      path: `lesson/${String(lessonNumber).padStart(2, "0")}`,
     };
   })
   .sort((a, b) => a.number - b.number);
 
-interface LessonComponent {
-  component: ComponentType;
-  name: string;
-  number: number;
-}
-
 export default function LessonsPage() {
   const { i18n } = useTranslation();
-  const [currentLesson, setCurrentLesson] = useState(
-    lessonComponents.length - 1,
-  );
   const nodeRef = useRef(null);
-  const CurrentLessonComponent = lessonComponents[currentLesson].component;
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const currentLessonIndex = lessonComponents.findIndex((lesson) =>
+    location.pathname.includes(String(lesson.number).padStart(2, "0")),
+  );
+
+  const defaultIndex =
+    currentLessonIndex === -1
+      ? lessonComponents.length - 1
+      : currentLessonIndex;
 
   const handleLessonChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    setCurrentLesson(Number(event.target.value));
+    const selectedLesson = lessonComponents[Number(event.target.value)];
+    navigate(`/${selectedLesson.path}`);
   };
 
   return (
@@ -68,17 +79,15 @@ export default function LessonsPage() {
           </div>
           <nav className="lesson-nav">
             <select
-              value={currentLesson}
+              value={defaultIndex}
               onChange={handleLessonChange}
               className="text-sm rounded-lg py-0.5"
             >
-              {lessonComponents.map(
-                (lesson: LessonComponent, index: number) => (
-                  <option key={lesson.number} value={index}>
-                    {lesson.name} homework
-                  </option>
-                ),
-              )}
+              {lessonComponents.map((lesson, index) => (
+                <option key={lesson.number} value={index}>
+                  {lesson.name} homework
+                </option>
+              ))}
             </select>
             <LanguageSwitcher
               currentLanguage={i18n.language}
@@ -89,7 +98,21 @@ export default function LessonsPage() {
       </Draggable>
 
       <main className="lesson-main">
-        <CurrentLessonComponent />
+        <Routes>
+          <Route
+            path="/"
+            element={createElement(
+              lessonComponents[lessonComponents.length - 1].component,
+            )}
+          />
+          {lessonComponents.map((lesson) => (
+            <Route
+              key={lesson.number}
+              path={lesson.path}
+              element={createElement(lesson.component)}
+            />
+          ))}
+        </Routes>
       </main>
     </div>
   );
