@@ -7,6 +7,21 @@
     <meta content="AIT Homeworks by Vasyl Khvostyk" name="description" />
     <meta content="Vasyl Khvostyk" name="author" />
     <title>AIT Homeworks by Vasyl Khvostyk</title>
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // Workaround for router issues
+      (function () {
+        const base = "/ait-fs";
+        const l = window.location;
+        if (l.pathname.startsWith(base) && l.pathname !== base + "/") {
+          const route = l.pathname.slice(base.length);
+          window.history.replaceState(null, null, base + "/#" + route);
+          setTimeout(() => {
+            window.history.replaceState(null, null, l.pathname);
+          }, 100);
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

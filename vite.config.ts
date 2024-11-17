@@ -25,6 +25,6 @@ export default defineConfig({
   },
   assetsInclude: ["**/*.json"],
   define: {
-    "process.env.VITE_APP_BASE": JSON.stringify(base),
+    "process.env.BASE_URL": JSON.stringify(base),
   },
 });

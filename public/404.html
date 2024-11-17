@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>AIT FS</title>
+    <script>
+      const base = "/ait-fs";
+      const params = new URLSearchParams(window.location.search);
+      let redirectPath = base;
+
+      // If we came from a specific path, try to preserve it
+      if (window.location.pathname.startsWith(base)) {
+        redirectPath = window.location.pathname;
+      }
+
+      // Preserve query parameters and hash
+      const queryString = params.toString();
+      const hash = window.location.hash;
+
+      window.location.href = `${base}/${queryString ? "?" + queryString : ""}${hash}`;
+    </script>
+  </head>
+  <body>
+    <p>Redirecting...</p>
+  </body>
+</html>
