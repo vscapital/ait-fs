@@ -106,7 +106,7 @@ export default function LessonsPage() {
       <main className="lesson-main">
         <Routes>
           <Route
-            path="/"
+            path="*"
             element={createElement(
               lessonComponents[lessonComponents.length - 1].component,
             )}
@@ -114,7 +114,7 @@ export default function LessonsPage() {
           {lessonComponents.map((lesson) => (
             <Route
               key={lesson.number}
-              path={lesson.path}
+              path={`lesson/${String(lesson.number).padStart(2, "0")}/*`}
               element={createElement(lesson.component)}
             />
           ))}
