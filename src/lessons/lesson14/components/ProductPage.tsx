@@ -82,7 +82,7 @@ export default function ProductPage() {
 
   if (isLoading) {
     return (
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 max-w-7xl">
         {renderBackButton()}
         <div className="flex justify-center items-center h-screen">
           <Spinner size="xl" />
@@ -93,7 +93,7 @@ export default function ProductPage() {
 
   if (error) {
     return (
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 max-w-7xl">
         {renderBackButton()}
         <Alert color="failure">
           <div className="font-medium">{error}</div>
@@ -105,7 +105,7 @@ export default function ProductPage() {
 
   if (!product) {
     return (
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-8 max-w-7xl">
         {renderBackButton()}
         <Alert color="info">
           <div className="font-medium">{t("product-not-found")}</div>
@@ -116,7 +116,7 @@ export default function ProductPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 max-w-7xl">
       {renderBackButton()}
       <Card>
         <div className="md:flex">
@@ -126,7 +126,7 @@ export default function ProductPage() {
               src={product.image}
               alt={product.title}
               onError={(e) => {
-                e.currentTarget.src = "/api/placeholder/300/300"; // Using the placeholder API
+                e.currentTarget.src = "https://placehold.co/300x300.png";
                 e.currentTarget.alt = t("image-load-error");
               }}
             />
