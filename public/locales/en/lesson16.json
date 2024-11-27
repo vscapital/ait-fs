@@ -1,0 +1,27 @@
+{
+  "loading": "Loading...",
+  "load-products": "Load Products",
+  "enter-limit": "Enter number of products",
+  "back": "Back",
+  "description": "Description",
+  "category": "Category",
+  "stock": "In Stock",
+  "price": "Price",
+  "rating": "Rating",
+  "reviews": "reviews",
+  "product-not-found": "Product Not Found",
+  "check-product-id": "Please check the product ID and try again",
+  "validation": {
+    "limit-required": "Number of products is required",
+    "limit-min": "Minimum 1 product",
+    "limit-max": "Maximum 100 products",
+    "limit-integer": "Must be a whole number"
+  },
+  "errors": {
+    "fetch-failed": "Failed to fetch data",
+    "empty-response": "Server returned empty response",
+    "invalid-json": "Invalid data received from server",
+    "generic": "An error occurred",
+    "try-again": "Please try again later"
+  }
+}
