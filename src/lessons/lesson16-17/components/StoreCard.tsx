@@ -2,6 +2,9 @@ import { Card } from "flowbite-react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import Product from "../types/product";
+import { useCart } from "../contexts/CartContext.tsx";
+import Button from "../../../components/Button.tsx";
+import { ShoppingCart } from "lucide-react";
 
 interface StoreCardProps {
   product: Product;
@@ -12,7 +15,8 @@ export default function StoreCard({
   product,
   isLoading = false,
 }: StoreCardProps) {
-  const { t } = useTranslation("lesson16");
+  const { t } = useTranslation("lesson1617");
+  const { addItem } = useCart();
 
   if (isLoading) {
     return (
@@ -29,6 +33,10 @@ export default function StoreCard({
 
   const discountedPrice =
     product.price * (1 - product.discountPercentage / 100);
+
+  const handleAddToCart = () => {
+    addItem(product);
+  };
 
   return (
     <Link
@@ -70,6 +78,12 @@ export default function StoreCard({
               </span>
             </div>
           </div>
+        </div>
+        <div className="mt-4">
+          <Button className="w-full" onClick={handleAddToCart}>
+            <ShoppingCart className="mr-2 h-4 w-4" />
+            {t("cart.add")}
+          </Button>
         </div>
       </Card>
     </Link>

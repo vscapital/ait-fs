@@ -10,7 +10,7 @@ export default function Store() {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string>("");
-  const { t } = useTranslation("lesson16");
+  const { t } = useTranslation("lesson1617");
 
   const loadProducts = async (limit: number) => {
     setIsLoading(true);

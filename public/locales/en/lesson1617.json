@@ -23,5 +23,15 @@
     "invalid-json": "Invalid data received from server",
     "generic": "An error occurred",
     "try-again": "Please try again later"
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Your cart is empty",
+    "start-shopping": "Start adding items to your cart",
+    "clear": "Clear Cart",
+    "add": "Add to Cart",
+    "total-items": "Total Items",
+    "total-price": "Total Price",
+    "remove": "Remove"
   }
 }

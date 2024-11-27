@@ -3,7 +3,8 @@ import Product from "../types/product";
 import { useTranslation } from "react-i18next";
 import { Alert, Button, Card, Spinner } from "flowbite-react";
 import { useCallback, useEffect, useState } from "react";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ShoppingCart } from "lucide-react";
+import { useCart } from "../contexts/CartContext.tsx";
 
 export default function StorePage() {
   const navigate = useNavigate();
@@ -12,7 +13,8 @@ export default function StorePage() {
   const [selectedImage, setSelectedImage] = useState<string>("");
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string>("");
-  const { t } = useTranslation("lesson16");
+  const { t } = useTranslation("lesson1617");
+  const { addItem } = useCart();
 
   const fetchProduct = useCallback(
     async (signal: AbortSignal) => {
@@ -160,6 +162,13 @@ export default function StorePage() {
                 {t("stock")}: {product.stock}
               </span>
             </div>
+            <Button
+              className="my-4"
+              onClick={() => product && addItem(product)}
+            >
+              <ShoppingCart className="mr-2 h-5 w-5" />
+              {t("cart.add")}
+            </Button>
             <div className="mb-6">
               <h2 className="font-semibold mb-2">{t("description")}:</h2>
               <p className="text-gray-600">{product.description}</p>
